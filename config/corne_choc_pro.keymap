@@ -11,7 +11,7 @@
 
 / {
     chosen {
-        zmk,physical-layout = &default_layout;
+        zmk,physical-layout = &five_col_layout;
     };
 };
 
