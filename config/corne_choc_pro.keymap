@@ -85,8 +85,8 @@
 
             bindings = <
   &kp NUMBER_1        &kp NUMBER_2   &kp NUMBER_3    &kp NUMBER_4  &kp N5        &trans  &trans  &kp N6          &kp N7          &kp N8        &kp N9     &kp N0
-  &mt LEFT_GUI GRAVE  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LCTRL     &none         &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp APOS
-  &kp BACKSLASH       &bt BT_CLR     &bt BT_SEL 2    &bt BT_SEL 1  &bt BT_SEL 0                  &kp PLUS        &kp POUND       &kp N8        &kp N9     &kp N0
+  &mt LEFT_GUI GRAVE  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LCTRL     &kp EQUAL     &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp APOS
+  &kp BACKSLASH       &bt BT_CLR     &bt BT_SEL 2    &bt BT_SEL 1  &bt BT_SEL 0                  &kp COMMA       &kp PERIOD      &kp SLASH     &kp APOS   &kp RIGHT_BRACKET
                                      &trans          &trans        &trans                        &trans          &trans          &trans
             >;
         };
