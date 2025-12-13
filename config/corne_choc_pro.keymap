@@ -7,7 +7,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
 
 / {
     chosen { zmk,physical-layout = &five_col_layout; };
@@ -30,6 +29,27 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
+
+        ae: ae {
+            compatible = "zmk,behavior-tap-dance";
+            label = "Ä homerow";
+            #binding-cells = <0>;
+            bindings = <&mt LEFT_GUI A>, <&kp APOS>;
+        };
+
+        oe: oe {
+            compatible = "zmk,behavior-tap-dance";
+            label = "OE";
+            #binding-cells = <0>;
+            bindings = <&kp O>, <&kp SEMI>;
+        };
+
+        ue: ue {
+            compatible = "zmk,behavior-tap-dance";
+            label = "UE";
+            #binding-cells = <0>;
+            bindings = <&kp U>, <&kp LEFT_BRACKET>;
+        };
     };
 
     keymap {
@@ -45,10 +65,10 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-  &kp Q           &kp W           &kp E             &kp R        &kp T      &none  &none  &kp Y      &kp U        &kp I              &kp O            &kp P
-  &mt LEFT_GUI A  &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LCTRL F  &kp G      &none  &none  &kp H      &mt RCTRL J  &mt RIGHT_SHIFT K  &mt RIGHT_ALT L  &mt RIGHT_GUI ESCAPE
-  &kp Z           &kp X           &kp C             &kp V        &kp B                    &kp N      &kp M        &none              &none            &none
-                                  &none             &mo 1        &kp ENTER                &spaceTab  &none        &none
+  &kp Q  &kp W           &kp E             &kp R        &kp T      &none  &none  &kp Y      &ue          &kp I              &oe              &kp P
+  &ae    &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LCTRL F  &kp G      &none  &none  &kp H      &mt RCTRL J  &mt RIGHT_SHIFT K  &mt RIGHT_ALT L  &mt RIGHT_GUI SEMI
+  &kp Z  &kp X           &kp C             &kp V        &kp B                    &kp N      &kp M        &kp COMMA          &kp PERIOD       &kp SLASH
+                         &none             &mo 1        &kp ENTER                &spaceTab  &none        &none
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
@@ -64,10 +84,10 @@
             //                    | GUI |     | SPC   |        | ENT   |     | ALT |
 
             bindings = <
-  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp N5        &trans        &kp LCTRL     &kp RCTRL     &kp N6           &kp N7      &kp N8       &kp N9
-  &kp N0        &kp BSPC      &kp LCTRL     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp LALT         &kp RALT    &kp LEFT     &kp DOWN
-  &kp NUMBER_6  &kp N7        &kp N8        &kp N9        &kp N0                                    &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset  &bootloader  &studio_unlock
-                              &trans        &trans        &trans                                    &trans        &trans           &trans
+  &kp NUMBER_1        &kp NUMBER_2   &kp NUMBER_3    &kp NUMBER_4  &kp N5        &trans  &trans  &kp N6          &kp N7          &kp N8        &kp N9     &kp N0
+  &mt LEFT_GUI GRAVE  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LCTRL     &none         &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp APOS
+  &kp BACKSLASH       &bt BT_CLR     &bt BT_SEL 2    &bt BT_SEL 1  &bt BT_SEL 0                  &kp PLUS        &kp POUND       &kp N8        &kp N9     &kp N0
+                                     &trans          &trans        &trans                        &trans          &trans          &trans
             >;
         };
 
