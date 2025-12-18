@@ -101,10 +101,10 @@
             //                    | GUI |     | SPC |               | ENT |     | ALT |
 
             bindings = <
-  &kp F1    &kp F2    &kp F3     &kp F4     &kp F5     &none   &none   &kp F8    &kp F9    &kp F10    &kp F11    &kp F12
-  &kp RPAR  &kp BSPC  &kp LCTRL  &trans     &trans     &trans  &trans  &trans    &kp LALT  &kp RALT   &kp MINUS  &kp EQUAL
-  &kp LBKT  &kp RBKT  &kp BSLH   &kp GRAVE  &kp LSHFT                  &trans    &trans    &trans     &trans     &trans
-                      &kp UNDER  &kp PLUS   &kp LBRC                   &kp RBRC  &kp PIPE  &kp TILDE
+  &kp F1        &kp F2        &kp F3          &kp F4            &kp F5     &none   &none   &kp F8  &kp F9                                      &kp F10                                    &kp F11                           &kp F12
+  &kp LEFT_GUI  &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &trans     &trans  &trans  &trans  &homerowMod RIGHT_CONTROL LEFT_PARENTHESIS  &homerowMod RIGHT_SHIFT RIGHT_PARENTHESIS  &homerowMod RIGHT_ALT LEFT_BRACE  &homerowMod RIGHT_GUI RIGHT_BRACE
+  &kp LBKT      &kp RBKT      &kp BSLH        &kp GRAVE         &kp LSHFT                  &trans  &kp LEFT_BRACKET                            &kp RIGHT_BRACKET                          &trans                            &trans
+                              &trans          &trans            &trans                     &trans  &trans                                      &trans
             >;
         };
 
