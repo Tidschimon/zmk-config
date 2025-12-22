@@ -99,7 +99,7 @@
             bindings = <
   &kp NUMBER_1        &kp NUMBER_2   &kp NUMBER_3    &kp NUMBER_4  &kp N5     &trans  &trans  &kp N6          &kp N7          &kp N8        &kp N9     &kp N0
   &mt LEFT_GUI GRAVE  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LCTRL     &kp EQUAL  &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp MINUS
-  &kp BACKSLASH       &trans         &trans          &trans        &trans                     &kp COMMA       &kp PERIOD      &kp SLASH     &kp APOS   &kp RIGHT_BRACKET
+  &kp NON_US_BSLH     &trans         &trans          &trans        &trans                     &kp COMMA       &kp PERIOD      &kp SLASH     &kp APOS   &kp RIGHT_BRACKET
                                      &trans          &trans        &trans                     &trans          &trans          &trans
             >;
         };
