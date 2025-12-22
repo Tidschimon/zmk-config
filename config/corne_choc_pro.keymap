@@ -27,9 +27,9 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            require-prior-idle-ms = <150>;
-            flavor = "balanced";
+            tapping-term-ms = <300>;
+            require-prior-idle-ms = <200>;
+            flavor = "tap-preferred";
         };
 
         ae: ae {
@@ -96,10 +96,10 @@
             //                    | GUI |     | SPC   |        | ENT   |     | ALT |
 
             bindings = <
-  &kp NUMBER_1        &kp NUMBER_2   &kp NUMBER_3    &kp NUMBER_4  &kp N5        &trans  &trans  &kp N6          &kp N7          &kp N8        &kp N9     &kp N0
-  &mt LEFT_GUI GRAVE  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LCTRL     &kp EQUAL     &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp APOS
-  &kp BACKSLASH       &bt BT_CLR     &bt BT_SEL 2    &bt BT_SEL 1  &bt BT_SEL 0                  &kp COMMA       &kp PERIOD      &kp SLASH     &kp APOS   &kp RIGHT_BRACKET
-                                     &trans          &trans        &trans                        &trans          &trans          &trans
+  &kp NUMBER_1        &kp NUMBER_2   &kp NUMBER_3    &kp NUMBER_4  &kp N5     &trans  &trans  &kp N6          &kp N7          &kp N8        &kp N9     &kp N0
+  &mt LEFT_GUI GRAVE  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LCTRL     &kp EQUAL  &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp MINUS
+  &kp BACKSLASH       &trans         &trans          &trans        &trans                     &kp COMMA       &kp PERIOD      &kp SLASH     &kp APOS   &kp RIGHT_BRACKET
+                                     &trans          &trans        &trans                     &trans          &trans          &trans
             >;
         };
 
@@ -123,10 +123,10 @@
         Utility {
             display-name = "EXTRA 1";
             bindings = <
-  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans          &kp C_VOLUME_UP    &trans  &trans      &kp PRINTSCREEN
-  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &kp C_PREVIOUS  &kp C_PLAY_PAUSE   &trans  &kp C_NEXT  &trans
-  &bootloader  &trans  &trans  &trans  &trans                  &kp C_MUTE      &kp C_VOLUME_DOWN  &trans  &trans      &bootloader
-                       &trans  &trans  &trans                  &trans          &trans             &trans
+  &trans       &trans      &trans        &trans        &trans        &trans  &trans  &trans          &kp C_VOLUME_UP    &trans  &trans      &kp PRINTSCREEN
+  &trans       &trans      &trans        &trans        &trans        &trans  &trans  &kp C_PREVIOUS  &kp C_PLAY_PAUSE   &trans  &kp C_NEXT  &trans
+  &bootloader  &bt BT_CLR  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0                  &kp C_MUTE      &kp C_VOLUME_DOWN  &trans  &trans      &bootloader
+                           &trans        &trans        &trans                        &trans          &trans             &trans
             >;
         };
 
