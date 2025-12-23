@@ -78,9 +78,9 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-  &kp Q  &kp W           &kp E             &kp R        &kp T      &none  &none  &kp Y      &ue            &kp I              &oe              &kp P
-  &ae    &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LCTRL F  &kp G      &none  &none  &kp H      &mt RCTRL J    &mt RIGHT_SHIFT K  &mt RIGHT_ALT L  &mt RIGHT_GUI SEMI
-  &kp Z  &kp X           &kp C             &kp V        &kp B                    &kp N      &kp M          &kp COMMA          &kp PERIOD       &kp SLASH
+  &kp Q  &kp W           &kp E             &kp R        &kp T      &none  &none  &kp Y      &ue            &kp I              &oe             &kp P
+  &ae    &mt LEFT_ALT S  &mt LEFT_SHIFT D  &mt LCTRL F  &kp G      &none  &none  &kp H      &mt RCTRL J    &mt RIGHT_SHIFT K  &mt LEFT_ALT L  &mt LEFT_GUI SEMI
+  &kp Z  &kp X           &kp C             &kp V        &kp B                    &kp N      &kp M          &kp COMMA          &kp PERIOD      &kp SLASH
                          &mo 1             &kp ESCAPE   &kp ENTER                &spaceTab  &kp BACKSPACE  &mo 2
             >;
 
@@ -97,10 +97,10 @@
             //                    | GUI |     | SPC   |        | ENT   |     | ALT |
 
             bindings = <
-  &kp NUMBER_1        &kp NUMBER_2   &kp NUMBER_3    &kp NUMBER_4  &kp N5     &trans  &trans  &kp N6          &kp N7          &kp N8        &kp N9     &kp N0
-  &mt LEFT_GUI GRAVE  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LCTRL     &kp EQUAL  &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT  &kp MINUS
-  &kp NON_US_BSLH     &trans         &trans          &trans        &trans                     &kp COMMA       &kp PERIOD      &kp SLASH     &kp APOS   &kp RIGHT_BRACKET
-                                     &trans          &trans        &trans                     &trans          &trans          &trans
+  &kp F1                         &kp F2                          &kp F3                           &kp F4                      &kp F5  &trans  &trans  &kp F8     &kp F9                      &kp F10                          &kp F11                         &kp F12
+  &homerowMod LEFT_GUI NUMBER_1  &homerowMod RIGHT_ALT NUMBER_2  &homerowMod LEFT_SHIFT NUMBER_3  &homerowMod LCTRL NUMBER_4  &kp N5  &trans  &trans  &kp N6     &homerowMod LCTRL NUMBER_7  &homerowMod LEFT_SHIFT NUMBER_8  &homerowMod RIGHT_ALT NUMBER_9  &homerowMod LEFT_GUI NUMBER_0
+  &kp NON_US_BSLH                &trans                          &trans                           &trans                      &trans                  &kp COMMA  &kp PERIOD                  &kp SLASH                        &kp APOS                        &kp RIGHT_BRACKET
+                                                                 &trans                           &trans                      &trans                  &trans     &trans                      &trans
             >;
         };
 
