@@ -115,10 +115,10 @@
             //                    | GUI |     | SPC |               | ENT |     | ALT |
 
             bindings = <
-  &kp DE_CARET      &kp F2        &kp F3          &kp F4            &kp F5     &none   &none   &kp F8  &kp F9                                      &kp F10                                    &kp DE_SHARP_S                    &kp DE_ACUTE
-  &kp LEFT_GUI      &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &trans     &trans  &trans  &trans  &homerowMod RIGHT_CONTROL LEFT_PARENTHESIS  &homerowMod RIGHT_SHIFT RIGHT_PARENTHESIS  &homerowMod RIGHT_ALT LEFT_BRACE  &homerowMod RIGHT_GUI DE_PLUS
-  &kp DE_LESS_THAN  &kp RBKT      &kp BSLH        &kp GRAVE         &kp LSHFT                  &trans  &kp LEFT_BRACKET                            &kp RIGHT_BRACKET                          &trans                            &kp DE_POUND
-                                  &trans          &trans            &trans                     &trans  &trans                                      &trans
+  &kp DE_CARET      &kp F2        &kp F3          &kp F4            &kp F5     &none   &none   &kp F8          &kp F9            &kp F10  &kp DE_SHARP_S  &kp DE_ACUTE
+  &kp LEFT_GUI      &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &trans     &trans  &trans  &kp LEFT_ARROW  &kp DOWN_ARROW    &kp UP   &kp RIGHT       &homerowMod RIGHT_GUI DE_PLUS
+  &kp DE_LESS_THAN  &kp RBKT      &kp BSLH        &kp GRAVE         &kp LSHFT                  &trans          &kp LEFT_BRACKET  &kp UP   &trans          &kp DE_POUND
+                                  &trans          &trans            &trans                     &trans          &trans            &trans
             >;
         };
 
