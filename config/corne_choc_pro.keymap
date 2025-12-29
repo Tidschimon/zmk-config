@@ -81,7 +81,7 @@
   &kp DE_Q  &kp DE_W           &kp DE_E             &kp DE_R                 &kp DE_T   &none  &none  &kp DE_Z      &ue             &kp DE_I              &oe                &kp DE_P
   &ae       &mt LEFT_ALT DE_S  &mt LEFT_SHIFT DE_D  &mt LCTRL DE_F           &kp DE_G   &none  &none  &kp DE_H      &mt RCTRL DE_J  &mt RIGHT_SHIFT DE_K  &mt LEFT_ALT DE_L  &mt LEFT_GUI DE_O_UMLAUT
   &kp DE_Y  &kp DE_X           &kp DE_C             &kp DE_V                 &kp DE_B                 &kp DE_N      &kp DE_M        &kp DE_COMMA          &kp DE_PERIOD      &kp DE_MINUS
-                               &mo 1                &kp DE_ESCAPE_CHARACTER  &kp ENTER                &kp DE_SPACE  &kp BACKSPACE   &mo 2
+                               &mo 2                &kp DE_ESCAPE_CHARACTER  &kp ENTER                &kp DE_SPACE  &kp BACKSPACE   &mo 1
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
@@ -100,7 +100,7 @@
   &kp F1                      &kp F2                       &kp F3                        &kp F4                   &kp F5          &trans  &trans  &kp F8            &kp F9                   &kp F10                       &kp F11                      &kp F12
   &homerowMod LEFT_GUI DE_N1  &homerowMod RIGHT_ALT DE_N2  &homerowMod LEFT_SHIFT DE_N3  &homerowMod LCTRL DE_N4  &kp DE_N5       &trans  &trans  &kp DE_N6         &homerowMod LCTRL DE_N7  &homerowMod LEFT_SHIFT DE_N8  &homerowMod RIGHT_ALT DE_N9  &homerowMod LEFT_GUI DE_N0
   &kp DE_EXCLAMATION          &kp DE_DOUBLE_QUOTES         &kp DE_SECTION                &kp DE_DOLLAR            &kp DE_PERCENT                  &kp DE_AMPERSAND  &kp DE_SLASH             &kp DE_LEFT_PARENTHESIS       &kp DE_RIGHT_PARENTHESIS     &kp DE_EQUAL
-                                                           &trans                        &trans                   &trans                          &trans            &trans                   &mo 3
+                                                           &mo 3                         &trans                   &trans                          &trans            &trans                   &trans
             >;
         };
 
@@ -117,7 +117,7 @@
   &kp DE_CARET      &none         &none           &none             &none   &none  &none  &none           &kp HOME        &kp END  &kp DE_SHARP_S  &kp DE_ACUTE
   &kp LEFT_GUI      &kp LEFT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &none   &none  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP   &kp RIGHT       &kp DE_PLUS
   &kp DE_LESS_THAN  &none         &none           &none             &none                 &none           &none           &none    &none           &kp DE_POUND
-                                  &mo 3           &trans            &trans                &trans          &trans          &none
+                                  &trans          &trans            &trans                &trans          &trans          &mo 3
             >;
         };
 
