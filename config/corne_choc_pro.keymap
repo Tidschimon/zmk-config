@@ -23,7 +23,6 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            require-prior-idle-ms = <500>;
             flavor = "balanced";
             quick-tap-ms = <300>;
         };
@@ -114,10 +113,10 @@
             //                    | GUI |     | SPC |               | ENT |     | ALT |
 
             bindings = <
-  &kp DE_CARET      &none          &none           &none             &none   &none  &none  &none           &kp HOME        &kp END  &kp DE_SHARP_S  &kp DE_ACUTE
-  &kp LEFT_GUI      &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &none   &none  &none  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP   &kp RIGHT       &kp DE_PLUS
-  &kp DE_LESS_THAN  &none          &none           &none             &none                 &none           &none           &none    &none           &kp DE_POUND
-                                   &trans          &trans            &trans                &trans          &trans          &mo 3
+  &kp DE_CARET      &none          &none           &none             &none   &none  &none  &none           &kp HOME                      &kp END                    &kp DE_SHARP_S               &kp DE_ACUTE
+  &kp LEFT_GUI      &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &none   &none  &none  &kp LEFT_ARROW  &homerowMod LCTRL DOWN_ARROW  &homerowMod LEFT_SHIFT UP  &homerowMod RIGHT_ALT RIGHT  &homerowMod LEFT_GUI DE_PLUS
+  &kp DE_LESS_THAN  &none          &none           &none             &none                 &none           &none                         &none                      &none                        &kp DE_POUND
+                                   &trans          &trans            &trans                &trans          &trans                        &mo 3
             >;
         };
 
