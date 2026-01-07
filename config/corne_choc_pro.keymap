@@ -10,6 +10,8 @@
 #include <dt-bindings/zmk/outputs.h>
 #include "keys_de.h"
 
+int comboTimeout = 100;
+
 / {
     chosen { zmk,physical-layout = &five_col_layout; };
 };
@@ -35,31 +37,31 @@
             bindings = <&mo 3>;
             key-positions = <34 39>;
             require-prior-idle-ms = <500>;
-            timeout-ms = <150>;
+            timeout-ms = <comboTimeout>;
         };
 
         tab {
             bindings = <&kp TAB>;
             key-positions = <36 37>;
-            timeout-ms = <150>;
+            timeout-ms = <comboTimeout>;
         };
 
         ae {
             bindings = <&kp DE_A_UMLAUT>;
             key-positions = <12 2>;
-            timeout-ms = <150>;
+            timeout-ms = <comboTimeout>;
         };
 
         ue {
             bindings = <&kp DE_U_UMLAUT>;
             key-positions = <8 2>;
-            timeout-ms = <150>;
+            timeout-ms = <comboTimeout>;
         };
 
         oe {
             bindings = <&kp DE_O_UMLAUT>;
             key-positions = <10 2>;
-            timeout-ms = <150>;
+            timeout-ms = <comboTimeout>;
         };
     };
 
