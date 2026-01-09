@@ -84,8 +84,6 @@
   &kp DE_Y                   &kp DE_X                   &kp DE_C                     &kp DE_V                &kp DE_B                 &kp DE_N      &kp DE_M                &kp DE_COMMA                  &kp DE_PERIOD              &kp DE_MINUS
                                                         &mo 2                        &kp ESCAPE              &kp ENTER                &kp DE_SPACE  &kp BACKSPACE           &mo 1
             >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN &inc_dec_kp C_PREV C_NEXT &inc_dec_kp C_BRI_DN C_BRI_UP>;
         };
 
         lower_layer {
@@ -115,10 +113,10 @@
             //                    | GUI |     | SPC |               | ENT |     | ALT |
 
             bindings = <
-  &kp DE_CARET      &none          &none           &none             &none   &none  &none  &none           &kp HOME                      &kp END                    &kp DE_SHARP_S               &kp DE_ACUTE
-  &kp LEFT_GUI      &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &none   &none  &none  &kp LEFT_ARROW  &homerowMod LCTRL DOWN_ARROW  &homerowMod LEFT_SHIFT UP  &homerowMod RIGHT_ALT RIGHT  &homerowMod LEFT_GUI DE_PLUS
-  &kp DE_LESS_THAN  &none          &none           &none             &none                 &none           &kp INSERT                    &kp DELETE                 &none                        &kp DE_POUND
-                                   &trans          &trans            &trans                &trans          &trans                        &mo 3
+  &kp DE_CARET                       &none          &none           &none             &none   &none  &none  &none           &kp HOME                      &kp END                    &kp DE_SHARP_S               &kp DE_ACUTE
+  &homerowMod DE_LESS_THAN LEFT_GUI  &kp RIGHT_ALT  &kp LEFT_SHIFT  &kp LEFT_CONTROL  &none   &none  &none  &kp LEFT_ARROW  &homerowMod LCTRL DOWN_ARROW  &homerowMod LEFT_SHIFT UP  &homerowMod RIGHT_ALT RIGHT  &homerowMod LEFT_GUI DE_PLUS
+  &none                              &none          &none           &none             &none                 &none           &kp INSERT                    &kp DELETE                 &none                        &kp DE_POUND
+                                                    &trans          &trans            &trans                &trans          &trans                        &mo 3
             >;
         };
 
