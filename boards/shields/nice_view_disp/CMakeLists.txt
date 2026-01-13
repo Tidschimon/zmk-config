@@ -1,7 +1,7 @@
 if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
   # Generate commit info header at build time
   execute_process(
-    COMMAND git log -1 --format=%h
+    COMMAND git log -1 --format=%H --abbrev=7
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     OUTPUT_VARIABLE GIT_COMMIT_HASH
     OUTPUT_STRIP_TRAILING_WHITESPACE
