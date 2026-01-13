@@ -1,0 +1,12 @@
+/*
+ * Copyright (c) 2023 The ZMK Contributors
+ * SPDX-License-Identifier: MIT
+ *
+ * Auto-generated file - DO NOT EDIT
+ * Generated at build time with git commit information
+ */
+
+#pragma once
+
+#define GIT_COMMIT_HASH "@GIT_COMMIT_HASH@"
+#define GIT_COMMIT_MSG "@GIT_COMMIT_MSG_SHORT@"
