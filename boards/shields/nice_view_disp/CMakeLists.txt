@@ -17,14 +17,19 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
   )
   
   # Truncate commit message to 50 characters for display
-  string(SUBSTRING "${GIT_COMMIT_MSG}" 0 50 GIT_COMMIT_MSG_SHORT)
+  string(LENGTH "${GIT_COMMIT_MSG}" MSG_LENGTH)
+  if(MSG_LENGTH GREATER 50)
+    string(SUBSTRING "${GIT_COMMIT_MSG}" 0 50 GIT_COMMIT_MSG_SHORT)
+  else()
+    set(GIT_COMMIT_MSG_SHORT "${GIT_COMMIT_MSG}")
+  endif()
   
   # Fallback values if git is not available
   if(NOT GIT_COMMIT_HASH)
     set(GIT_COMMIT_HASH "unknown")
   endif()
   
-  if(NOT GIT_COMMIT_MSG)
+  if(NOT GIT_COMMIT_MSG_SHORT)
     set(GIT_COMMIT_MSG_SHORT "No commit message")
   endif()
   
