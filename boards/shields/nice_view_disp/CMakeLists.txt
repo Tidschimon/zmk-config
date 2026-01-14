@@ -1,8 +1,11 @@
 if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
   # Generate commit info header at build time
+  # Use the zmk-config repository (3 levels up from this CMakeLists.txt)
+  get_filename_component(CONFIG_REPO_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../.." ABSOLUTE)
+  
   execute_process(
     COMMAND git log -1 --format=%h
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    WORKING_DIRECTORY ${CONFIG_REPO_ROOT}
     OUTPUT_VARIABLE GIT_COMMIT_HASH
     OUTPUT_STRIP_TRAILING_WHITESPACE
     ERROR_QUIET
@@ -10,7 +13,7 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
   
   execute_process(
     COMMAND git log -1 --format=%s
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    WORKING_DIRECTORY ${CONFIG_REPO_ROOT}
     OUTPUT_VARIABLE GIT_COMMIT_MSG
     OUTPUT_STRIP_TRAILING_WHITESPACE
     ERROR_QUIET
