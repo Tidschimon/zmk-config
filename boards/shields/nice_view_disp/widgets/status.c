@@ -83,11 +83,16 @@ static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_st
     lv_canvas_draw_rect(canvas, 0, 21, 68, 42, &rect_white_dsc);
     lv_canvas_draw_rect(canvas, 1, 22, 66, 40, &rect_black_dsc);
 
-    // Draw commit hash
-    lv_canvas_draw_text(canvas, 3, 24, 62, &label_dsc_small, GIT_COMMIT_HASH);
+    // Draw commit hash (7 characters)
+    char hash_display[8];
+    snprintf(hash_display, sizeof(hash_display), "%.7s", GIT_COMMIT_HASH);
+    lv_canvas_draw_text(canvas, 3, 24, 62, &label_dsc_small, hash_display);
     
-    // Draw commit message (first line, truncated to fit)
-    lv_canvas_draw_text(canvas, 3, 36, 62, &label_dsc_small, GIT_COMMIT_MSG);
+    // Draw commit message line 1 (14 characters max)
+    lv_canvas_draw_text(canvas, 3, 36, 62, &label_dsc_small, GIT_COMMIT_MSG_LINE1);
+    
+    // Draw commit message line 2 (14 characters max)
+    lv_canvas_draw_text(canvas, 3, 48, 62, &label_dsc_small, GIT_COMMIT_MSG_LINE2);
 
     // Rotate canvas
     rotate_canvas(canvas, cbuf);
@@ -118,12 +123,31 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     };
 
     for (int i = 0; i < 5; i++) {
-        bool selected = i == state->active_profile_index;
+        bool is_active = i == state->active_profile_index;
+        bool is_bonded = !zmk_ble_profile_is_open(i);
+        bool is_connected = zmk_ble_profile_is_connected(i);
+        
+        // Don't draw anything if profile is not bonded (absent)
+        if (!is_bonded) {
+            continue;
+        }
 
-        lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 13, 0, 360,
-                           &arc_dsc);
+        // Draw outer circle (solid for bonded, will be dashed for disconnected)
+        if (is_connected) {
+            // Solid circle for connected profiles
+            lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 13, 0, 360,
+                               &arc_dsc);
+        } else {
+            // Dashed circle for paired but not connected profiles
+            // Draw 8 arc segments with gaps
+            for (int angle = 0; angle < 360; angle += 45) {
+                lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 13, 
+                                   angle, angle + 30, &arc_dsc);
+            }
+        }
 
-        if (selected) {
+        // Fill the active profile
+        if (is_active) {
             lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 9, 0, 359,
                                &arc_dsc_filled);
         }
@@ -131,7 +155,7 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
         char label[2];
         snprintf(label, sizeof(label), "%d", i + 1);
         lv_canvas_draw_text(canvas, circle_offsets[i][0] - 8, circle_offsets[i][1] - 10, 16,
-                            (selected ? &label_dsc_black : &label_dsc), label);
+                            (is_active ? &label_dsc_black : &label_dsc), label);
     }
 
     // Rotate canvas

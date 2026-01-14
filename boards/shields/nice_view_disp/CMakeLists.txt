@@ -16,12 +16,26 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
     ERROR_QUIET
   )
   
-  # Truncate commit message to 50 characters for display
+  # Truncate commit message to 28 characters for display (2 lines of 14 chars)
   string(LENGTH "${GIT_COMMIT_MSG}" MSG_LENGTH)
-  if(MSG_LENGTH GREATER 50)
-    string(SUBSTRING "${GIT_COMMIT_MSG}" 0 50 GIT_COMMIT_MSG_SHORT)
+  if(MSG_LENGTH GREATER 28)
+    string(SUBSTRING "${GIT_COMMIT_MSG}" 0 28 GIT_COMMIT_MSG_FULL)
   else()
-    set(GIT_COMMIT_MSG_SHORT "${GIT_COMMIT_MSG}")
+    set(GIT_COMMIT_MSG_FULL "${GIT_COMMIT_MSG}")
+  endif()
+  
+  # Split into two lines
+  string(LENGTH "${GIT_COMMIT_MSG_FULL}" MSG_FULL_LENGTH)
+  if(MSG_FULL_LENGTH GREATER 14)
+    string(SUBSTRING "${GIT_COMMIT_MSG_FULL}" 0 14 GIT_COMMIT_MSG_LINE1)
+    math(EXPR REMAINING_LENGTH "${MSG_FULL_LENGTH} - 14")
+    if(REMAINING_LENGTH GREATER 14)
+      set(REMAINING_LENGTH 14)
+    endif()
+    string(SUBSTRING "${GIT_COMMIT_MSG_FULL}" 14 ${REMAINING_LENGTH} GIT_COMMIT_MSG_LINE2)
+  else()
+    set(GIT_COMMIT_MSG_LINE1 "${GIT_COMMIT_MSG_FULL}")
+    set(GIT_COMMIT_MSG_LINE2 "")
   endif()
   
   # Fallback values if git is not available
@@ -29,8 +43,12 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
     set(GIT_COMMIT_HASH "unknown")
   endif()
   
-  if(NOT GIT_COMMIT_MSG_SHORT)
-    set(GIT_COMMIT_MSG_SHORT "No commit message")
+  if(NOT GIT_COMMIT_MSG_LINE1)
+    set(GIT_COMMIT_MSG_LINE1 "No commit")
+  endif()
+  
+  if(NOT GIT_COMMIT_MSG_LINE2)
+    set(GIT_COMMIT_MSG_LINE2 "message")
   endif()
   
   # Generate header file with commit info
