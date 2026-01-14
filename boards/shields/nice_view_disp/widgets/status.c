@@ -125,17 +125,12 @@ static void draw_middle(lv_obj_t *widget, lv_color_t cbuf[], const struct status
         bool is_bonded = !zmk_ble_profile_is_open(i);
         bool is_connected = zmk_ble_profile_is_connected(i);
         
-        // Don't draw anything if profile is not bonded (absent)
-        if (!is_bonded) {
-            continue;
-        }
-
         // Draw outer circle (solid for bonded, will be dashed for disconnected)
         if (is_connected) {
             // Solid circle for connected profiles
             lv_canvas_draw_arc(canvas, circle_offsets[i][0], circle_offsets[i][1], 13, 0, 360,
                                &arc_dsc);
-        } else {
+        } else if (is_bonded) {
             // Dashed circle for paired but not connected profiles
             // Draw 8 arc segments with gaps
             for (int angle = 0; angle < 360; angle += 45) {

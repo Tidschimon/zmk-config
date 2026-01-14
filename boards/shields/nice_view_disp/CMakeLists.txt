@@ -1,7 +1,7 @@
 if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
   # Generate commit info header at build time
   execute_process(
-    COMMAND git log -1 --format=%H --abbrev=7
+    COMMAND git log -1 --format=%h
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     OUTPUT_VARIABLE GIT_COMMIT_HASH
     OUTPUT_STRIP_TRAILING_WHITESPACE
@@ -16,23 +16,23 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
     ERROR_QUIET
   )
   
-  # Truncate commit message to 28 characters for display (2 lines of 14 chars)
+  # Truncate commit message to 14 characters for display (2 lines of 7 chars)
   string(LENGTH "${GIT_COMMIT_MSG}" MSG_LENGTH)
-  if(MSG_LENGTH GREATER 28)
-    string(SUBSTRING "${GIT_COMMIT_MSG}" 0 28 GIT_COMMIT_MSG_FULL)
+  if(MSG_LENGTH GREATER 14)
+    string(SUBSTRING "${GIT_COMMIT_MSG}" 0 14 GIT_COMMIT_MSG_FULL)
   else()
     set(GIT_COMMIT_MSG_FULL "${GIT_COMMIT_MSG}")
   endif()
   
   # Split into two lines
   string(LENGTH "${GIT_COMMIT_MSG_FULL}" MSG_FULL_LENGTH)
-  if(MSG_FULL_LENGTH GREATER 14)
-    string(SUBSTRING "${GIT_COMMIT_MSG_FULL}" 0 14 GIT_COMMIT_MSG_LINE1)
-    math(EXPR REMAINING_LENGTH "${MSG_FULL_LENGTH} - 14")
-    if(REMAINING_LENGTH GREATER 14)
-      set(REMAINING_LENGTH 14)
+  if(MSG_FULL_LENGTH GREATER 7)
+    string(SUBSTRING "${GIT_COMMIT_MSG_FULL}" 0 7 GIT_COMMIT_MSG_LINE1)
+    math(EXPR REMAINING_LENGTH "${MSG_FULL_LENGTH} - 7")
+    if(REMAINING_LENGTH GREATER 7)
+      set(REMAINING_LENGTH 7)
     endif()
-    string(SUBSTRING "${GIT_COMMIT_MSG_FULL}" 14 ${REMAINING_LENGTH} GIT_COMMIT_MSG_LINE2)
+    string(SUBSTRING "${GIT_COMMIT_MSG_FULL}" 7 ${REMAINING_LENGTH} GIT_COMMIT_MSG_LINE2)
   else()
     set(GIT_COMMIT_MSG_LINE1 "${GIT_COMMIT_MSG_FULL}")
     set(GIT_COMMIT_MSG_LINE2 "")
