@@ -83,10 +83,8 @@ static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_st
     lv_canvas_draw_rect(canvas, 0, 21, 68, 42, &rect_white_dsc);
     lv_canvas_draw_rect(canvas, 1, 22, 66, 40, &rect_black_dsc);
 
-    // Draw commit hash (7 characters)
-    char hash_display[8];
-    snprintf(hash_display, sizeof(hash_display), "%.7s", GIT_COMMIT_HASH);
-    lv_canvas_draw_text(canvas, 3, 24, 62, &label_dsc_small, hash_display);
+    // Draw commit hash (already 7 characters from git --abbrev=7)
+    lv_canvas_draw_text(canvas, 3, 24, 62, &label_dsc_small, GIT_COMMIT_HASH);
     
     // Draw commit message line 1 (14 characters max)
     lv_canvas_draw_text(canvas, 3, 36, 62, &label_dsc_small, GIT_COMMIT_MSG_LINE1);
