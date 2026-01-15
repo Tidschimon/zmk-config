@@ -1,5 +1,6 @@
 #!/bin/bash
 # Script to update commit info header before committing
+set -e
 
 COMMIT_HASH=$(git log -1 --format=%h)
 COMMIT_MSG=$(git log -1 --format=%s)
@@ -10,11 +11,6 @@ COMMIT_MSG_TRUNCATED=$(echo "$COMMIT_MSG" | cut -c1-14)
 # Split into 7-character lines
 LINE1=$(echo "$COMMIT_MSG_TRUNCATED" | cut -c1-7)
 LINE2=$(echo "$COMMIT_MSG_TRUNCATED" | cut -c8-14)
-
-# Pad LINE2 if it's shorter than expected (for cleaner display)
-if [ -z "$LINE2" ]; then
-    LINE2=""
-fi
 
 HEADER_FILE="boards/shields/nice_view_disp/widgets/commit_info.h"
 
