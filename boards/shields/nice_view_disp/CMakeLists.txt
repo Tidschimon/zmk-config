@@ -1,11 +1,14 @@
 if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
   # Generate commit info header at build time
   # Try to find the zmk-config repository root
-  # First try: Use GITHUB_WORKSPACE environment variable (set during GitHub Actions build)
-  set(CONFIG_REPO_ROOT "$ENV{GITHUB_WORKSPACE}")
-  
-  # Second try: If GITHUB_WORKSPACE is empty, use relative path (3 levels up from this CMakeLists.txt)
-  if(NOT CONFIG_REPO_ROOT)
+  # First try: Use Zephyr module variable (available when module is loaded)
+  if(DEFINED ZEPHYR_ZMK_CONFIG_MODULE_DIR)
+    set(CONFIG_REPO_ROOT "${ZEPHYR_ZMK_CONFIG_MODULE_DIR}")
+  # Second try: Use GITHUB_WORKSPACE environment variable (set during GitHub Actions build)
+  elseif(DEFINED ENV{GITHUB_WORKSPACE})
+    set(CONFIG_REPO_ROOT "$ENV{GITHUB_WORKSPACE}")
+  # Third try: Use relative path (3 levels up from this CMakeLists.txt)
+  else()
     get_filename_component(CONFIG_REPO_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../.." ABSOLUTE)
   endif()
   
