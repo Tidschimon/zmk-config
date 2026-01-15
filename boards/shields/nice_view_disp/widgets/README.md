@@ -10,10 +10,10 @@ The `commit_info.h` file contains the current commit hash and message that will 
 
 When you push to the repository, GitHub Actions will automatically:
 1. Run the `update-commit-info.sh` script to generate the latest commit info
-2. Commit and push the updated `commit_info.h` if it changed
+2. Commit and push the updated `commit_info.h` if it changed (with `[skip ci]` in the commit message)
 3. Build the firmware with the updated commit information
 
-The commit message includes `[skip ci]` to prevent triggering another build cycle.
+The `[skip ci]` tag prevents the commit info update from triggering another workflow run, avoiding infinite loops.
 
 ## Manual Updates (Optional)
 
