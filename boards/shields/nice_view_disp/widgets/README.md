@@ -4,13 +4,20 @@ This directory contains code to display commit information on the nice_view disp
 
 ## How it Works
 
-The `commit_info.h` file contains the current commit hash and message that will be displayed on the device. This file is committed to the repository and should be updated before pushing changes.
+The `commit_info.h` file contains the current commit hash and message that will be displayed on the device. This file is committed to the repository.
 
-## Updating Commit Info
+## Automatic Updates (GitHub Actions)
 
-### Automatic (Recommended)
+When you push to the repository, GitHub Actions will automatically:
+1. Run the `update-commit-info.sh` script to generate the latest commit info
+2. Commit and push the updated `commit_info.h` if it changed
+3. Build the firmware with the updated commit information
 
-Run the update script before committing:
+The commit message includes `[skip ci]` to prevent triggering another build cycle.
+
+## Manual Updates (Optional)
+
+You can also manually update the commit info before committing:
 
 ```bash
 ./update-commit-info.sh
@@ -18,9 +25,9 @@ git add boards/shields/nice_view_disp/widgets/commit_info.h
 git commit -m "your commit message"
 ```
 
-### Manual
+### Manual Edit
 
-Edit `boards/shields/nice_view_disp/widgets/commit_info.h` and update the values:
+If needed, you can manually edit `boards/shields/nice_view_disp/widgets/commit_info.h`:
 
 ```c
 #define GIT_COMMIT_HASH "abc1234"       // 7-character commit hash
