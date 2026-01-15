@@ -4,20 +4,22 @@ This directory contains code to display commit information on the nice_view disp
 
 ## How it Works
 
-The `commit_info.h` file contains the current commit hash and message that will be displayed on the device. This file is committed to the repository.
+The `commit_info.h` file contains the current commit hash and message that will be displayed on the device. This file must be updated and committed before pushing changes.
 
-## Automatic Updates (GitHub Actions)
+## Setup (One-time)
 
-When you push to the repository, GitHub Actions will automatically:
-1. Run the `update-commit-info.sh` script to generate the latest commit info
-2. Commit and push the updated `commit_info.h` if it changed (with `[skip ci]` in the commit message)
-3. Build the firmware with the updated commit information
+Install the pre-commit hook to automatically update commit info:
 
-The `[skip ci]` tag prevents the commit info update from triggering another workflow run, avoiding infinite loops.
+```bash
+cp pre-commit-hook.sh .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
 
-## Manual Updates (Optional)
+Once installed, the hook will automatically run `update-commit-info.sh` and include the updated `commit_info.h` in your commit.
 
-You can also manually update the commit info before committing:
+## Manual Updates
+
+If you prefer not to use the pre-commit hook, run the script before committing:
 
 ```bash
 ./update-commit-info.sh
@@ -25,9 +27,17 @@ git add boards/shields/nice_view_disp/widgets/commit_info.h
 git commit -m "your commit message"
 ```
 
-### Manual Edit
+## How the Script Works
 
-If needed, you can manually edit `boards/shields/nice_view_disp/widgets/commit_info.h`:
+The `update-commit-info.sh` script:
+1. Gets the current commit hash (7 characters)
+2. Gets the commit message and truncates it to 14 characters
+3. Splits the message into two 7-character lines for the display
+4. Updates `commit_info.h` with this information
+
+## Manual Edit (Not Recommended)
+
+You can manually edit `boards/shields/nice_view_disp/widgets/commit_info.h`:
 
 ```c
 #define GIT_COMMIT_HASH "abc1234"       // 7-character commit hash
