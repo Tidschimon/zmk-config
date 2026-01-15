@@ -4,22 +4,43 @@ This directory contains code to display commit information on the nice_view disp
 
 ## How it Works
 
-The `commit_info.h` file contains the current commit hash and message that will be displayed on the device. This file must be updated and committed before pushing changes.
+The `commit_info.h` file contains the current commit hash and message that will be displayed on the device. This file must be kept in sync with your commits.
 
-## Setup (One-time)
+## Automatic Updates
 
-Install the pre-commit hook to automatically update commit info:
+There are two ways to keep commit info updated automatically:
+
+### Option 1: Pre-commit Hook (for local development)
+
+Install the pre-commit hook to automatically update commit info when committing locally:
 
 ```bash
 cp pre-commit-hook.sh .git/hooks/pre-commit
 chmod +x .git/hooks/pre-commit
 ```
 
-Once installed, the hook will automatically run `update-commit-info.sh` and include the updated `commit_info.h` in your commit.
+Once installed, the hook automatically runs `update-commit-info.sh` and includes the updated `commit_info.h` in your commit.
+
+**Benefits:** No extra commits in your git history
+
+### Option 2: GitHub Actions (automatic fallback)
+
+If you commit via web interfaces (like ZMK Studio keymap editor) or forget to run the hook, GitHub Actions will automatically:
+1. Detect if `commit_info.h` is out of date
+2. Update it and create a commit with message "chore: update commit info [skip ci]"
+3. Build the firmware with the correct information
+
+**Benefits:** Works for web-based commits, no manual intervention needed
+
+### Best Practice
+
+Install the pre-commit hook for local development. This way:
+- Local commits: commit info is updated by the hook (no extra commit)
+- Web commits: GitHub Actions automatically creates an update commit only when needed
 
 ## Manual Updates
 
-If you prefer not to use the pre-commit hook, run the script before committing:
+You can also manually update the commit info:
 
 ```bash
 ./update-commit-info.sh

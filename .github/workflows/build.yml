@@ -2,5 +2,43 @@ name: Build ZMK firmware
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
+  update-commit-info:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Update commit info
+        run: |
+          chmod +x update-commit-info.sh
+          ./update-commit-info.sh
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet boards/shields/nice_view_disp/widgets/commit_info.h; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "Commit info is already up to date"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Commit info needs to be updated"
+          fi
+      
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true' && github.event_name != 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add boards/shields/nice_view_disp/widgets/commit_info.h
+          git commit -m "chore: update commit info [skip ci]"
+          git push
+
   build:
+    needs: update-commit-info
+    permissions:
+      contents: read
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
