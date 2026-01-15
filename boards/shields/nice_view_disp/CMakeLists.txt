@@ -5,7 +5,7 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_DISP_WIDGET_STATUS)
   set(CONFIG_REPO_ROOT "$ENV{GITHUB_WORKSPACE}")
   
   # Second try: If GITHUB_WORKSPACE is empty, use relative path (3 levels up from this CMakeLists.txt)
-  if(NOT CONFIG_REPO_ROOT OR CONFIG_REPO_ROOT STREQUAL "")
+  if(NOT CONFIG_REPO_ROOT)
     get_filename_component(CONFIG_REPO_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../.." ABSOLUTE)
   endif()
   
