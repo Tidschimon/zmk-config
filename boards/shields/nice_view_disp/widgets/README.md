@@ -26,11 +26,13 @@ Once installed, the hook automatically runs `update-commit-info.sh` and includes
 ### Option 2: GitHub Actions (automatic fallback)
 
 If you commit via web interfaces (like ZMK Studio keymap editor) or forget to run the hook, GitHub Actions will automatically:
-1. Detect if `commit_info.h` is out of date
+1. Detect if `commit_info.h` is out of date  
 2. Update it and create a commit with message "chore: update commit info [skip ci]"
-3. Build the firmware with the correct information
+3. Continue with the build using the updated commit (the `[skip ci]` only prevents triggering a second workflow run)
 
 **Benefits:** Works for web-based commits, no manual intervention needed
+
+**Note:** This creates a small "chore: update commit info" commit when the file is out of date.
 
 ### Best Practice
 
