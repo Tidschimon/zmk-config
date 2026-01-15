@@ -27,12 +27,12 @@ Once installed, the hook automatically runs `update-commit-info.sh` and includes
 
 If you commit via web interfaces (like ZMK Studio keymap editor) or forget to run the hook, GitHub Actions will automatically:
 1. Detect if `commit_info.h` is out of date  
-2. Update it and create a commit with message "chore: update commit info [skip ci]"
+2. Update it and create a commit with your original commit message plus a note "Auto-updated commit info [skip ci]"
 3. Continue with the build using the updated commit (the `[skip ci]` only prevents triggering a second workflow run)
 
-**Benefits:** Works for web-based commits, no manual intervention needed
+**Benefits:** Works for web-based commits, preserves your commit message, no manual intervention needed
 
-**Note:** This creates a small "chore: update commit info" commit when the file is out of date.
+**Note:** This creates a commit with the same message as your original commit when the file is out of date.
 
 ### Best Practice
 
